@@ -57,7 +57,7 @@ const Book: React.FC = () => {
     return (
         <div className="page">
             <h2 style={{ marginBottom: '1rem' }}>Book an Appointment</h2>
-            <div className="calendly-container" style={{ width: '100%', height: '650px', margin: '-50px' }} ref={containerRef} />
+            <div className="calendly-container" style={{ width: '100%', height: '650px' }} ref={containerRef} />
         </div>
     );
 };
