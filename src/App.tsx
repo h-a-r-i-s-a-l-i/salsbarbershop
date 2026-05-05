@@ -1,129 +1,113 @@
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import './App.css';
-import Barbers from './pages/Barbers';
 import Book from './pages/Book';
+import Contact from './pages/Contact';
+import Gallery from './pages/Gallery';
+import Services from './pages/Services';
+import TestimonialCard from './components/TestimonialCard';
+
+const testimonials = [
+  {
+    name: 'Alex G.',
+    role: 'Local professional',
+    quote: 'Sal’s delivers precise cuts every visit. The atmosphere is polished and the results are sharp.',
+  },
+  {
+    name: 'Brittany S.',
+    role: 'Executive client',
+    quote: 'The clean finish and attention to detail are unmatched. This is the only barbershop I trust.',
+  },
+  {
+    name: 'Marcus T.',
+    role: 'Frequent visitor',
+    quote: 'Modern service with classic craft. My haircut lasts longer and looks better than ever.',
+  },
+];
 
 function Home() {
   return (
-    <div className="homepage">
-      <div className="hero-section">
-        <video className="hero-video" src="https://www.w3schools.com/howto/rain.mp4" autoPlay loop muted poster="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80" />
-        <div className="hero-overlay">
-          <h1 className="hero-title">Sal's Barbershop</h1>
-          <p className="hero-tagline">Modern cuts. Timeless tradition.</p>
-          <a href="/book" className="hero-cta">Book Now</a>
-        </div>
-      </div>
-      <div className="intro-gallery">
-        <div className="gallery-item">
-          <img src="https://images.unsplash.com/photo-1520880867055-1e30d1cb001c?auto=format&fit=crop&w=400&q=80" alt="Fresh Haircut 1" />
-          <div className="gallery-desc">
-            <strong>Fresh Fades & Modern Looks</strong>
-            <p>From fades to pompadours, our experienced barbers craft signature styles just for you.</p>
+    <main className="home-page">
+      <section className="page-hero home-hero">
+        <div className="hero-copy">
+          <span className="eyebrow">Premium Barber Experience</span>
+          <h1>Sal’s Barber Shop</h1>
+          <p>Modern, masculine grooming for men who want clean lines, powerful style, and a premium finishing touch.</p>
+          <div className="hero-actions">
+            <NavLink to="/book" className="btn btn-primary">Book Now</NavLink>
+            <NavLink to="/services" className="btn btn-outline">View Services</NavLink>
           </div>
-        </div>
-        <div className="gallery-item">
-          <img src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c47?auto=format&fit=crop&w=400&q=80" alt="Shop Interior" />
-          <div className="gallery-desc">
-            <strong>Classic Shop Vibes</strong>
-            <p>Relax in our welcoming, vintage-inspired shop atmosphere—where every visit feels special.</p>
-          </div>
-        </div>
-        <div className="gallery-item">
-          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Barber at work" />
-          <div className="gallery-desc">
-            <strong>Expert Barbers</strong>
-            <p>Our team is dedicated to achieving the perfect look—precision, care, & style in every cut.</p>
-          </div>
-        </div>
-      </div>
-      <div className="mission-section">
-        <h2>Our Mission</h2>
-        <p>
-          At Sal's Barbershop, our mission is to blend modern style with timeless tradition,
-          giving every guest the confidence and comfort they deserve. We believe in community,
-          respect, and the perfect haircut—every time.
-        </p>
-      </div>
-      <div className="reviews-section">
-        <h2>What Our Customers Say</h2>
-        <div className="reviews-grid">
-          <div className="review-card">
-            <div className="review-stars">★★★★★</div>
-            <div className="review-quote">“I always leave here feeling fresh. Best barbers in town!”</div>
-            <div className="review-source">— Alex G.</div>
-          </div>
-          <div className="review-card">
-            <div className="review-stars">★★★★★</div>
-            <div className="review-quote">“Great vibe, great people, and a perfect cut every time.”</div>
-            <div className="review-source">— Brittany S.</div>
-          </div>
-          <div className="review-card">
-            <div className="review-stars">★★★★★</div>
-            <div className="review-quote">“Old-school attention to detail meets modern style & skill.”</div>
-            <div className="review-source">— Marcus T.</div>
-          </div>
-        </div>
-      </div>
-      <section id="contact" className="contact-section">
-        <div>
-          <h2>Contact</h2>
-          <p> 549 Thompson Rd S, Milton, ON </p>
-          <p> Phone: (905) 636-8280</p>
-        </div>
-        <div>
-          <h2> Hours </h2>
-          <p> Monday: Closed</p>
-          <p> Tuesday-Friday:	9AM to 7:30PM </p>
-          <p> Saturday:	8:30AM to 5PM </p>
-          <p> Sunday: 10AM to 5PM</p>
         </div>
       </section>
-    </div>
+
+      <section className="section-container about-block">
+        <div className="about-copy">
+          <span className="eyebrow">About Us</span>
+          <h2>Precision grooming in a refined atmosphere.</h2>
+          <p>At Sal’s, we combine premium tools, expert technique, and a polished environment to deliver a confident haircut every time. Our shop is built for professionals who expect clean style and attentive service.</p>
+          <ul className="about-list">
+            <li>Expert barbers with modern and classic skill sets</li>
+            <li>Clean, masculine atmosphere with premium finishing touches</li>
+            <li>Fast, reliable appointments designed for busy schedules</li>
+          </ul>
+        </div>
+        <div className="about-image">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1100&q=80" alt="Barber styling a client's hair" />
+        </div>
+      </section>
+
+      <section className="section-container service-teaser">
+        <div className="section-headline">
+          <span className="eyebrow">Services Overview</span>
+          <h2>Sharp cuts, clean fades, and premium grooming.</h2>
+        </div>
+        <div className="service-teaser-grid">
+          <div className="service-teaser-card">Precision Haircut</div>
+          <div className="service-teaser-card">Signature Fade</div>
+          <div className="service-teaser-card">Beard Sculpt</div>
+          <div className="service-teaser-card">Executive Package</div>
+        </div>
+        <NavLink to="/services" className="btn btn-outline">See All Services</NavLink>
+      </section>
+
+      <section className="section-container testimonials-block">
+        <div className="section-headline">
+          <span className="eyebrow">Testimonials</span>
+          <h2>Trusted by professionals and locals alike.</h2>
+        </div>
+        <div className="testimonial-grid">
+          {testimonials.map((testimonial) => (
+            <TestimonialCard key={testimonial.name} {...testimonial} />
+          ))}
+        </div>
+      </section>
+
+      <section className="section-container cta-block">
+        <h2>Experience the next level of barbering.</h2>
+        <p>Book a premium appointment today and step into a sharper, cleaner version of yourself.</p>
+        <NavLink to="/book" className="btn btn-primary">Reserve your spot</NavLink>
+      </section>
+    </main>
   );
 }
 
-// `Book` page moved to src/pages/Book.tsx
-
-// Barbers page implemented in src/pages/Barbers.tsx
-
-function Gallery() {
-  return <div className="page"><h2>Gallery</h2></div>;
-}
-
-function Contact() {
-  return <div className="page"><h2>Contact & Location</h2></div>;
-}
-
 function NavBar() {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const handleContact = (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (location.pathname !== '/') {
-      navigate('/');
-      setTimeout(() => {
-        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-      }, 120);
-    } else {
-      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <nav className="navbar">
-      <div className="logo-title-container">
-        <div className="logo-pill">💈</div>
-        <span className="big-brand">SAL'S BARBER SHOP</span>
-        <div className="logo-pill">💈</div>
-      </div>
-      <div className="nav-links">
-        <Link to="/">Home</Link>
-        <Link to="/book">Book</Link>
-        <Link to="/barbers">Barbers</Link>
-        <Link to="/gallery">Gallery</Link>
-        <a href="#contact" onClick={handleContact}>Contact & Hours</a>
+      <div className="section-container nav-inner">
+        <div className="brand-block">
+          <div className="logo-pill">💈</div>
+          <div className="brand-copy">
+            <span className="big-brand">SAL’S</span>
+            <span className="brand-subtitle">Barber Shop</span>
+          </div>
+        </div>
+        <div className="nav-links">
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/services">Services</NavLink>
+          <NavLink to="/gallery">Gallery</NavLink>
+          <NavLink to="/book">Book</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
+        </div>
       </div>
     </nav>
   );
@@ -135,22 +119,20 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/book" element={<Book />} />
-        <Route path="/barbers" element={<Barbers />} />
+        <Route path="/services" element={<Services />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/book" element={<Book />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-      <footer className="footer">
+      <footer className="footer site-footer">
         <div className="footer-links">
-          <a href="/">Home</a>
-          <a href="/book">Book</a>
-          <a href="/barbers">Barbers</a>
-          <a href="/gallery">Gallery</a>
-          <a href="#contact">Contact</a>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/services">Services</NavLink>
+          <NavLink to="/gallery">Gallery</NavLink>
+          <NavLink to="/book">Book</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
         </div>
-        <div className="footer-copy">
-          © {new Date().getFullYear()} 💈 Sal's Barber Shop 💈 | Made with ♥ in Milton
-        </div>
+        <div className="footer-copy">© {new Date().getFullYear()} Sal’s Barber Shop — Premium Men’s Grooming</div>
       </footer>
     </Router>
   );

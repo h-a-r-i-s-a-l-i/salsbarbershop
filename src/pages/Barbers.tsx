@@ -35,8 +35,8 @@ const sampleBarbers = [
 const Barbers: React.FC = () => {
     return (
         <div className="barbers-page">
-            <div style={{ maxWidth: 1200, margin: '0 auto', paddingTop: '2.4rem' }}>
-                <h1 className="barbers-header">Meet the Barbers</h1>
+            <div className="section-container" style={{ paddingTop: '2.4rem' }}>
+                <h1 className="barbers-header anim-scale">Meet the Barbers</h1>
                 <div className="barbers-grid">
                     {sampleBarbers.map((b) => (
                         <BarberCard

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-const CALENDLY_URL = 'https://calendly.com/harisali2533/new-meeting'; // replace if needed
+const CALENDLY_URL = 'https://calendly.com/harisali2533/new-meeting';
 
 const Book: React.FC = () => {
     const containerRef = useRef<HTMLDivElement | null>(null);
@@ -12,19 +12,13 @@ const Book: React.FC = () => {
             const win = window as any;
             const parent = containerRef.current;
             if (!parent) return;
-            // clear existing children (if any)
             parent.innerHTML = '';
-            try {
-                if (win.Calendly && typeof win.Calendly.initInlineWidget === 'function') {
-                    win.Calendly.initInlineWidget({ url: CALENDLY_URL, parentElement: parent });
-                    return;
-                }
-            } catch (err) {
-                // ignore and fallback to iframe below
+
+            if (win.Calendly && typeof win.Calendly.initInlineWidget === 'function') {
+                win.Calendly.initInlineWidget({ url: CALENDLY_URL, parentElement: parent });
+                return;
             }
 
-            // Fallback: embed Calendly via iframe (more reliable across SPA navigation)
-            // Calendly supports embed_type=Inline and embed_domain parameters
             const iframe = document.createElement('iframe');
             const host = window.location.hostname || 'localhost';
             const src = `${CALENDLY_URL}?embed_domain=${encodeURIComponent(host)}&embed_type=Inline`;
@@ -37,28 +31,41 @@ const Book: React.FC = () => {
         };
 
         if (!document.getElementById(id)) {
-            const s = document.createElement('script');
-            s.src = 'https://assets.calendly.com/assets/external/widget.js';
-            s.async = true;
-            s.id = id;
-            s.onload = () => initCalendly();
-            document.body.appendChild(s);
+            const script = document.createElement('script');
+            script.src = 'https://assets.calendly.com/assets/external/widget.js';
+            script.async = true;
+            script.id = id;
+            script.onload = initCalendly;
+            document.body.appendChild(script);
         } else {
-            // script already present — re-init widget
             initCalendly();
         }
 
         return () => {
-            // cleanup: remove any Calendly nodes we added
-            if (containerRef.current) containerRef.current.innerHTML = '';
+            if (containerRef.current) {
+                containerRef.current.innerHTML = '';
+            }
         };
     }, []);
 
     return (
-        <div className="page">
-            <h2 style={{ marginBottom: '1rem' }}>Book an Appointment</h2>
-            <div className="calendly-container" style={{ width: '100%', height: '650px' }} ref={containerRef} />
-        </div>
+        <main className="booking-page">
+            <section className="page-hero booking-hero">
+                <div className="hero-copy">
+                    <span className="eyebrow">Book Your Visit</span>
+                    <h1>Reserve a premium appointment.</h1>
+                    <p>Secure your spot with our fast and easy scheduling experience. Your next sharp look starts here.</p>
+                </div>
+            </section>
+
+            <section className="section-container booking-content">
+                <div className="booking-intro">
+                    <h2>Choose your time</h2>
+                    <p>Use the booking widget below to select the service, date, and time that fits your schedule.</p>
+                </div>
+                <div className="calendly-wrapper" ref={containerRef} />
+            </section>
+        </main>
     );
 };
 

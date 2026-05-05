@@ -8,6 +8,8 @@ interface BarberCardProps {
     specialty?: string;
     bio?: string;
     rank?: Rank;
+    className?: string;
+    style?: React.CSSProperties;
 }
 
 const rankColor = (rank?: Rank) => {
@@ -25,9 +27,9 @@ const rankColor = (rank?: Rank) => {
     }
 };
 
-const BarberCard: React.FC<BarberCardProps> = ({ name, photo, specialty, bio, rank }) => {
+const BarberCard: React.FC<BarberCardProps> = ({ name, photo, specialty, bio, rank, className, style }) => {
     return (
-        <div className="barber-card">
+        <div className={"barber-card" + (className ? ` ${className}` : '')} style={style}>
             <div className="barber-photo-frame">
                 <img className="barber-photo" src={photo} alt={name} />
             </div>
