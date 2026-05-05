@@ -1296,7 +1296,6 @@ a {
   padding: 4rem 1.5rem;
   color: #fff;
   overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .page-hero::after {
@@ -1468,6 +1467,7 @@ a {
 .gallery-grid {
   display: grid;
   gap: 1.75rem;
+  margin: 1rem;
 }
 
 .testimonials-block {
@@ -1726,7 +1726,7 @@ a {
 
   .page-hero {
     min-height: 60vh;
-    padding: 3rem 1.2rem;
+    padding: 8rem 1.2rem;
   }
 
   .service-teaser-grid,
