@@ -64,7 +64,7 @@ function Home() {
           </ul>
         </div>
         <div className="about-image">
-          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1100&q=80" alt="Barber styling a client's hair" />
+          <img src="/about-home.jpg" alt="Barber styling a client's hair" />
         </div>
       </section>
 
