@@ -1328,7 +1328,7 @@ a {
 }
 
 .booking-hero {
-  background-image: url('book-bg-image.jpg');
+  background-image: url('/book-bg-image.jpg');
   background-size: cover;
   background-position: center;
 }
