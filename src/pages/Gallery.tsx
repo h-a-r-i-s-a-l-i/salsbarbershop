@@ -1,7 +1,6 @@
 const galleryImages = [
     '/gallery-1.jpg',
-    '/gallery-2.jpg',
-    'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1000&q=80',
+    '/gallery-2.jpg'
 ];
 
 export default function Gallery() {

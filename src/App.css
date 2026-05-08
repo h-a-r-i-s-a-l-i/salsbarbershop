@@ -526,6 +526,32 @@ body {
   background: #FFD700;
 }
 
+.navbar .nav-links a:last-child {
+  background: linear-gradient(100deg, var(--clr-light) 16%, #997726 100%);
+  color: var(--clr-dark);
+  font-family: var(--font-head);
+  padding: 0.8em 1.5em;
+  border-radius: 36px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  font-size: 1rem;
+  box-shadow: 0 8px 32px #7c643c55;
+  transition: background 0.35s, transform 0.25s, color 0.16s;
+  border: 2.5px solid var(--clr-accent);
+  margin-left: 1rem;
+}
+
+.navbar .nav-links a:last-child:hover {
+  background: linear-gradient(105deg, var(--clr-accent) 0%, var(--clr-light) 99%);
+  color: var(--clr-dark);
+  transform: scale(1.07);
+}
+
+.navbar .nav-links a:last-child::before {
+  display: none;
+}
+
 .hero-section {
   width: 100%;
   min-width: 100%;
@@ -1096,7 +1122,7 @@ body {
 }
 
 .contact-link:hover {
-  transform: scale(1.05);
+  transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(255, 215, 0, 0.5);
 }
 
@@ -1197,14 +1223,20 @@ a {
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
-.btn:hover {
+.hero-copy a:hover {
   transform: translateY(-2px);
 }
 
 .btn-primary {
   background: linear-gradient(135deg, #d4af37 0%, #ffd44d 100%);
-  color: #111;
+  color: #000000;
   box-shadow: 0 16px 40px rgba(212, 175, 55, 0.24);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #ffd44d 0%, #fff7c2 100%);
+  color: #111111;
+  transform: translateY(-2px);
 }
 
 .btn-outline {
@@ -1214,7 +1246,9 @@ a {
 }
 
 .btn-outline:hover {
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  border-color: #ffd777;
 }
 
 .navbar {
@@ -1641,15 +1675,15 @@ a {
 
 .gallery-card img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
   display: block;
-  min-height: 260px;
+  aspect-ratio: 4 / 3;
   border-radius: 22px;
 }
 
 .gallery-page .gallery-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .contact-layout {

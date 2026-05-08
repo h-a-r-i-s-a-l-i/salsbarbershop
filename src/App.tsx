@@ -42,7 +42,7 @@ function Home() {
     <main className="home-page">
       <section className="page-hero home-hero">
         <div className="hero-copy">
-          <span className="eyebrow">Premium Barber Experience</span>
+          <span className="eyebrow">Premium Barber Experience in Milton</span>
           <h1>Sal's Barber Shop</h1>
           <p>Modern, masculine grooming for men who want clean lines, powerful style, and a premium finishing touch.</p>
           <div className="hero-actions">
