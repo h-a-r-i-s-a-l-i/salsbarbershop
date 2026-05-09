@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, NavLink, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Book from './pages/Book';
 import Contact from './pages/Contact';
@@ -104,26 +104,44 @@ function Home() {
 }
 
 function NavBar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleLinkClick = () => {
+    setMenuOpen(false);
+    scrollToTop();
   };
 
   return (
     <nav className="navbar">
       <div className="section-container nav-inner">
-        <NavLink to="/" className="brand-block" onClick={scrollToTop}>
-          <div className="logo-pill" onClick={() => console.log("TEST")}>💈</div>
+        <NavLink to="/" className="brand-block" onClick={handleLinkClick}>
+          <div className="logo-pill">💈</div>
           <div className="brand-copy">
             <span className="big-brand">SAL'S</span>
             <span className="brand-subtitle">Barber Shop</span>
           </div>
         </NavLink>
-        <div className="nav-links">
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/services">Services</NavLink>
-          <NavLink to="/gallery">Gallery</NavLink>
-          <NavLink to="/book">Book</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
+        <button
+          type="button"
+          className={`nav-toggle ${menuOpen ? 'open' : ''}`}
+          aria-expanded={menuOpen}
+          aria-controls="primary-navigation"
+          onClick={() => setMenuOpen((prev) => !prev)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <div id="primary-navigation" className={`nav-links ${menuOpen ? 'open' : ''}`}>
+          <NavLink to="/" onClick={handleLinkClick}>Home</NavLink>
+          <NavLink to="/services" onClick={handleLinkClick}>Services</NavLink>
+          <NavLink to="/gallery" onClick={handleLinkClick}>Gallery</NavLink>
+          <NavLink to="/book" onClick={handleLinkClick}>Book</NavLink>
+          <NavLink to="/contact" onClick={handleLinkClick}>Contact</NavLink>
         </div>
       </div>
     </nav>

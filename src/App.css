@@ -484,6 +484,37 @@ body {
   filter: drop-shadow(0 1px 0 #3E2723);
 }
 
+.nav-toggle {
+  display: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 1rem;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  margin: 5px 0;
+  border-radius: 999px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 .nav-links {
   display: flex;
   flex-wrap: wrap;
@@ -526,6 +557,10 @@ body {
   background: #FFD700;
 }
 
+.navbar a:last-child:hover::after {
+  width: 0;
+}
+
 .navbar .nav-links a:last-child {
   background: linear-gradient(100deg, var(--clr-light) 16%, #997726 100%);
   color: var(--clr-dark);
@@ -539,7 +574,8 @@ body {
   box-shadow: 0 8px 32px #7c643c55;
   transition: background 0.35s, transform 0.25s, color 0.16s;
   border: 2.5px solid var(--clr-accent);
-  margin-left: 1rem;
+  max-width: 4rem;
+  align-self: center;
 }
 
 .navbar .nav-links a:last-child:hover {
@@ -1206,9 +1242,9 @@ a {
 }
 
 .section-container {
-  max-width: 1200px;
+  max-width: 76rem;
   margin: 0 auto;
-  padding: 0 1.5rem 3rem;
+  padding: 0rem 1.5rem 3rem;
 }
 
 .btn {
@@ -1780,12 +1816,42 @@ a {
 
 @media (max-width: 720px) {
   .nav-inner {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-toggle {
+    display: block;
+    margin-left: auto;
+    order: 1;
   }
 
   .nav-links {
-    justify-content: center;
+    display: none;
+    flex-direction: column;
+    gap: 0.85rem;
+    width: 100%;
+    order: 2;
+    margin-top: 0.85rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.12);
+    border-radius: 1rem;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    width: 100%;
+    text-align: center;
+    padding: 0.65rem 0;
+  }
+
+  .nav-links a+a {
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
   }
 
   .page-hero {
@@ -1816,7 +1882,7 @@ a {
   }
 
   .section-container {
-    padding: 0 1rem 2rem;
+    padding: 1rem 1rem 2rem;
   }
 
   .calendly-wrapper,
